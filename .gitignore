@@ -78,3 +78,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]amples/XR Hands/*
 /[Aa]ssets/[Ss]amples/XR Interaction Toolkit.meta
 /[Aa]ssets/[Ss]amples/XR Interaction Toolkit/*
+
+# フォント元ファイル
+/Assets/Font/*.ttf
+/Assets/Font/*.ttf.meta
+/Assets/Font/*.txt
+/Assets/Font/*.txt.meta
