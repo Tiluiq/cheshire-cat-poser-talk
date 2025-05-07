@@ -1,8 +1,7 @@
 {
-    "name": "ExecuteScenarioUseCase",
+    "name": "PresenterInterface",
     "rootNamespace": "",
     "references": [
-        "GUID:6d27c4aec102a24429e18a65ae96ac95",
         "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
@@ -10,7 +9,7 @@
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
