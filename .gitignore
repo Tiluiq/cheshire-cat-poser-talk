@@ -84,3 +84,7 @@ crashlytics-build.properties
 /Assets/Font/*.ttf.meta
 /Assets/Font/*.txt
 /Assets/Font/*.txt.meta
+
+# エディタースクリプト
+/Assets/Main/Editor.meta
+/Assets/Main/Editor/*
