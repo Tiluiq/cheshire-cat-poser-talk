@@ -1,6 +1,6 @@
 {
-    "name": "GlobalFlag",
-    "rootNamespace": "",
+    "name": "Entity.Scene.Global",
+    "rootNamespace": "Entity.Scene.Global",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

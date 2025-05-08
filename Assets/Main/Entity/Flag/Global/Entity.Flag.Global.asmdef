@@ -1,9 +1,7 @@
 {
-    "name": "GlobalScene",
-    "rootNamespace": "",
-    "references": [
-        "GUID:77221876cc6b8244180b96e320b1bcd4"
-    ],
+    "name": "Entity.Flag.Global",
+    "rootNamespace": "Entity.Flag.Global",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

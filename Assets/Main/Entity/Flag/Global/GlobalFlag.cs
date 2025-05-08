@@ -1,4 +1,4 @@
-namespace Entity.GlobalFlag
+namespace Entity.Flag.Global
 {
     public class GlobalFlag
     {

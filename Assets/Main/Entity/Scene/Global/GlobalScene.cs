@@ -1,4 +1,4 @@
-namespace Entity.GlobalScene
+namespace Entity.Scene.Global
 {
     public enum GlobalSceneType
     {
