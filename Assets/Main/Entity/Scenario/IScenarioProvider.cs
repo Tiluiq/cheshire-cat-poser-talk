@@ -8,6 +8,7 @@ namespace Entity.Scenario
         UniTask ResetAsync(CancellationToken cancellationToken = default);
         UniTask<bool> MoveNextAsync(CancellationToken cancellationToken = default);
         ScenarioNode Current { get; }
+        bool IsEnd { get; }
         void Dispose();
     }
 }

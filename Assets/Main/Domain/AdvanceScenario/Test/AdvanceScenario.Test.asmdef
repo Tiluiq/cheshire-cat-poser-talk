@@ -1,13 +1,13 @@
 {
-    "name": "AdvanceScenarioUseCaseTest",
-    "rootNamespace": "",
+    "name": "AdvanceScenario.Test",
+    "rootNamespace": "Domain.AdvanceScenario.Test",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "Scenario",
         "PresenterInterface",
         "UniTask",
-        "AdvanceScenarioUseCase"
+        "AdvanceScenario"
     ],
     "includePlatforms": [
         "Editor"
