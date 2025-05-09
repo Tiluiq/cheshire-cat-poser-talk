@@ -2,7 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Domain.Interface.Presenter;
 
-namespace Domain.AdvanceScenario.Test
+namespace Domain.TestUtils
 {
     public class MockAnimationPresenter : IAnimationPresenter
     {

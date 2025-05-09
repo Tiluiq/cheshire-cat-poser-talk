@@ -4,9 +4,9 @@ using Entity.Scenario;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
+using Domain.TestUtils;
 
 namespace Domain.AdvanceScenario.Test
-
 {
     public class AdvanceScenarioUseCaseTest
     {

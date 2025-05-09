@@ -2,9 +2,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Domain.Interface.Presenter;
 
-namespace Domain.AdvanceScenario.Test
+namespace Domain.TestUtils
 {
-    class MockTextPresenter : ITextWindowPresenter
+    public class MockTextPresenter : ITextWindowPresenter
     {
         public string LastName { get; private set; }
         public string LastText { get; private set; }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Domain.AdvanceScenario.Test
+namespace Domain.TestUtils
 {
-    class MockScenarioProvider : IScenarioProvider
+    public class MockScenarioProvider : IScenarioProvider
     {
         public ScenarioNode Current { get; private set; }
         private List<ScenarioNode> nodes;
