@@ -29,7 +29,7 @@ namespace Domain.AdvanceScenario.Test
         public async Task AdvanceAsync_空のとき処理が終了する()
         {
             var scenarioNodes = new List<ScenarioNode>();
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
@@ -43,7 +43,7 @@ namespace Domain.AdvanceScenario.Test
             {
                 new ShowTextWindowNode("Window1")
             };
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
@@ -58,7 +58,7 @@ namespace Domain.AdvanceScenario.Test
             {
                 new HideTextWindowNode("Window1")
             };
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
@@ -73,13 +73,33 @@ namespace Domain.AdvanceScenario.Test
             {
                 new TextNode("Name1", "Text1")
             };
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
-            await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
+            advanceScenarioUseCase.AdvanceAsync(CancellationToken.None).Forget();
+            await UniTask.Delay(100); // 少し待つ
 
             Assert.AreEqual("Name1", mockTextPresenter.LastName);
             Assert.AreEqual("Text1", mockTextPresenter.LastText);
-            Assert.IsFalse(mockScenarioProvider.IsEnd); // WaitInputがtrueなので終了しない
+        }
+
+        [Test, Timeout(1000)]
+        public async Task AdvanceAsync_TextNodeのときインプットすると処理が終了する()
+        {
+            var scenarioNodes = new List<ScenarioNode>
+            {
+                new TextNode("Name1", "Text1")
+            };
+            mockScenarioProvider.SetNodes(scenarioNodes);
+
+            advanceScenarioUseCase.AdvanceAsync(CancellationToken.None).Forget();
+            await UniTask.Delay(100); // 少し待つ
+
+            Assert.IsFalse(mockScenarioProvider.IsEnd); // 終了していない
+
+            advanceScenarioUseCase.CompleteInputWait(); // インプットを完了させる
+            await UniTask.Delay(100); // 少し待つ
+
+            Assert.IsTrue(mockScenarioProvider.IsEnd); // 終了している
         }
 
         [Test, Timeout(1000)]
@@ -89,7 +109,7 @@ namespace Domain.AdvanceScenario.Test
             {
                 new TextNode("Name1", "Text1", false)
             };
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
@@ -103,7 +123,7 @@ namespace Domain.AdvanceScenario.Test
             {
                 new AnimationNode("Animation1")
             };
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
@@ -122,7 +142,7 @@ namespace Domain.AdvanceScenario.Test
             {
                 new AnimationNode("Animation1", true)
             };
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
@@ -138,7 +158,22 @@ namespace Domain.AdvanceScenario.Test
             {
                 new WaitNode(waitTime)
             };
-            await mockScenarioProvider.SetNodes(scenarioNodes);
+            mockScenarioProvider.SetNodes(scenarioNodes);
+
+            await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
+
+            Assert.IsTrue(mockScenarioProvider.IsEnd);
+        }
+
+        [Test]
+        public async Task AdvanceAsync_WaitNodeのとき指定時間待機する()
+        {
+            var waitTime = 0.25f;
+            var scenarioNodes = new List<ScenarioNode>
+            {
+                new WaitNode(waitTime)
+            };
+            mockScenarioProvider.SetNodes(scenarioNodes);
 
             var startTime = System.DateTime.Now;
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
@@ -146,7 +181,6 @@ namespace Domain.AdvanceScenario.Test
 
             var elapsedTime = (endTime - startTime).TotalSeconds;
             Assert.GreaterOrEqual(elapsedTime, waitTime);
-            Assert.IsTrue(mockScenarioProvider.IsEnd);
         }
     }
 }

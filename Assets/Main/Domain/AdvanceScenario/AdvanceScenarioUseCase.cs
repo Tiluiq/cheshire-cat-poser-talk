@@ -11,6 +11,8 @@ namespace Domain.AdvanceScenario
         private readonly ITextWindowPresenter textWindowPresenter;
         private readonly IAnimationPresenter animationPresenter;
 
+        private UniTaskCompletionSource inputWaiter;
+
         public AdvanceScenarioUseCase(IScenarioProvider scenarioProvider, ITextWindowPresenter textWindowPresenter, IAnimationPresenter animationPresenter)
         {
             this.scenarioProvider = scenarioProvider;
@@ -20,11 +22,8 @@ namespace Domain.AdvanceScenario
 
         public async UniTask AdvanceAsync(CancellationToken cancellationToken = default)
         {
-            var breakFlag = false;
-            while (await scenarioProvider.MoveNextAsync(cancellationToken))
+            await foreach (var currentNode in scenarioProvider.GetScenarioNodesAsync(cancellationToken))
             {
-                var currentNode = scenarioProvider.Current;
-
                 switch (currentNode)
                 {
                     case ShowTextWindowNode showTextWindowNode:
@@ -37,7 +36,10 @@ namespace Domain.AdvanceScenario
 
                     case TextNode textNode:
                         await textWindowPresenter.ShowTextAsync(textNode.Name, textNode.Text, cancellationToken);
-                        breakFlag = textNode.WaitInput;
+                        if (textNode.WaitInput)
+                        {
+                            await WaitForInputAsync(cancellationToken);
+                        }
                         break;
 
                     case AnimationNode animationNode:
@@ -58,12 +60,19 @@ namespace Domain.AdvanceScenario
                     default:
                         throw new System.NotImplementedException($"Node type {currentNode.GetType()} is not implemented.");
                 }
-
-                if (breakFlag)
-                {
-                    break;
-                }
             }
+        }
+
+        private async UniTask WaitForInputAsync(CancellationToken cancellationToken)
+        {
+            inputWaiter = new UniTaskCompletionSource();
+            await inputWaiter.Task.AttachExternalCancellation(cancellationToken);
+        }
+
+        public void CompleteInputWait()
+        {
+            inputWaiter?.TrySetResult();
+            inputWaiter = null;
         }
     }
 }

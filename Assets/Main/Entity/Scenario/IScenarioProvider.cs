@@ -5,10 +5,6 @@ namespace Entity.Scenario
 {
     public interface IScenarioProvider
     {
-        UniTask ResetAsync(CancellationToken cancellationToken = default);
-        UniTask<bool> MoveNextAsync(CancellationToken cancellationToken = default);
-        ScenarioNode Current { get; }
-        bool IsEnd { get; }
-        void Dispose();
+        IUniTaskAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync(CancellationToken cancellationToken = default);
     }
 }

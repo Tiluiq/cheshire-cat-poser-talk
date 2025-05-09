@@ -2,45 +2,46 @@ using Entity.Scenario;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Linq;
 
 namespace Domain.TestUtils
 {
     public class MockScenarioProvider : IScenarioProvider
     {
-        public ScenarioNode Current { get; private set; }
-        private List<ScenarioNode> nodes;
-        private int currentIndex = -1;
+        private List<ScenarioNode> scenarioNodes;
+        private int currentIndex;
+        public bool IsEnd { get; private set; }
 
-        public async UniTask SetNodes(List<ScenarioNode> nodes)
+        public MockScenarioProvider()
         {
-            this.nodes = nodes;
-            await ResetAsync();
+            scenarioNodes = new List<ScenarioNode>();
+            currentIndex = 0;
+            IsEnd = false;
         }
 
-        public UniTask ResetAsync(CancellationToken cancellationToken = default)
+        public void SetNodes(List<ScenarioNode> nodes)
         {
-            currentIndex = -1;
-            Current = null;
-            return UniTask.CompletedTask;
+            scenarioNodes = nodes;
+            currentIndex = 0;
+            IsEnd = false;
         }
 
-        public UniTask<bool> MoveNextAsync(CancellationToken cancellationToken = default)
+        public IUniTaskAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync(CancellationToken cancellationToken = default)
         {
-            currentIndex++;
-            if (currentIndex < nodes.Count)
+            return UniTaskAsyncEnumerable.Create<ScenarioNode>(async (writer, token) =>
             {
-                Current = nodes[currentIndex];
-                return UniTask.FromResult(true);
-            }
-            else
-            {
-                Current = null;
-                return UniTask.FromResult(false);
-            }
+                foreach (var node in scenarioNodes)
+                {
+                    if (token.IsCancellationRequested)
+                    {
+                        break;
+                    }
+
+                    await writer.YieldAsync(node);
+                }
+
+                IsEnd = !token.IsCancellationRequested;
+            });
         }
-
-        public bool IsEnd => currentIndex >= nodes.Count;
-
-        public void Dispose() { }
     }
 }
