@@ -1,7 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 
-namespace Domain.PresenterInterface
+namespace Domain.Interface.Presenter
 {
     public interface ITextWindowPresenter
     {

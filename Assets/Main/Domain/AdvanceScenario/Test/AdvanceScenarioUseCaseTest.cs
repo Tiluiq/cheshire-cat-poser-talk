@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Entity.Scenario;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Domain.PresenterInterface;
+using Domain.Interface.Presenter;
 using System.Threading.Tasks;
 
 namespace Domain.AdvanceScenario.Test

@@ -1,6 +1,6 @@
 {
-    "name": "Domain.PresenterInterface",
-    "rootNamespace": "Domain.PresenterInterface",
+    "name": "Domain.Interface.Presenter",
+    "rootNamespace": "Domain.Interface.Presenter",
     "references": [
         "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],

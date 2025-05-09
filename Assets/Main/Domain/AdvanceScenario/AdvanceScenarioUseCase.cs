@@ -1,7 +1,7 @@
 using Entity.Scenario;
 using Cysharp.Threading.Tasks;
 using System.Threading;
-using Domain.PresenterInterface;
+using Domain.Interface.Presenter;
 
 namespace Domain.AdvanceScenario
 {

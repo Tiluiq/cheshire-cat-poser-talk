@@ -1,6 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Domain.PresenterInterface;
+using Domain.Interface.Presenter;
 
 namespace Domain.AdvanceScenario.Test
 {
