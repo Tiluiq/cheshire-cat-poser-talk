@@ -13,6 +13,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
         private MockTextPresenter mockTextPresenter;
         private MockAnimationPresenter mockAnimationPresenter;
         private float animationDuration = 0.25f; // アニメーションのダミー時間
+        private MockAwaiterService mockAwaiterService;
         private AdvanceScenarioUseCase advanceScenarioUseCase;
 
         [SetUp]
@@ -21,7 +22,8 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
             mockScenarioProvider = new MockScenarioProvider();
             mockTextPresenter = new MockTextPresenter();
             mockAnimationPresenter = new MockAnimationPresenter(animationDuration);
-            advanceScenarioUseCase = new AdvanceScenarioUseCase(mockScenarioProvider, mockTextPresenter, mockAnimationPresenter);
+            mockAwaiterService = new MockAwaiterService();
+            advanceScenarioUseCase = new AdvanceScenarioUseCase(mockScenarioProvider, mockTextPresenter, mockAnimationPresenter, mockAwaiterService);
         }
 
         [Test, Timeout(1000)]
@@ -95,7 +97,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
 
             Assert.IsFalse(mockScenarioProvider.IsEnd); // 終了していない
 
-            // advanceScenarioUseCase.CompleteInputWait(); // インプットを完了させる
+            mockAwaiterService.ReceiveInput(); // インプットを完了させる
             await Task.Delay(100); // 少し待つ
 
             Assert.IsTrue(mockScenarioProvider.IsEnd); // 終了している
@@ -128,7 +130,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
 
             Assert.IsFalse(mockAnimationPresenter.IsPlayAnimaionEnded); // アニメーションが終了していない
 
-            await Task.Delay((int)(animationDuration * 1000)); // アニメーションのダミー時間待つ
+            await Task.Delay((int)(animationDuration * 1000 * 1.1)); // アニメーションのダミー時間＋α待つ
 
             Assert.IsTrue(mockAnimationPresenter.IsPlayAnimaionEnded); // アニメーションが終了している
             Assert.IsTrue(mockScenarioProvider.IsEnd);

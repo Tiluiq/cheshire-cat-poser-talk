@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Tasks;
 using CheshireCatPoserTalk.Entity.Scenario;
 
 namespace CheshireCatPoserTalk.Domain.TestUtils
@@ -24,23 +26,21 @@ namespace CheshireCatPoserTalk.Domain.TestUtils
             IsEnd = false;
         }
 
-        public IAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync(CancellationToken cancellationToken = default)
+        public async IAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync([EnumeratorCancellation] CancellationToken cancellationToken = default)
         {
-            throw new System.NotImplementedException("This method is not implemented yet.");
-            // return UniTaskAsyncEnumerable.Create<ScenarioNode>(async (writer, token) =>
-            // {
-            //     foreach (var node in scenarioNodes)
-            //     {
-            //         if (token.IsCancellationRequested)
-            //         {
-            //             break;
-            //         }
+            for (var i = 0; i < scenarioNodes.Count; i++)
+            {
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    yield break;
+                }
 
-            //         await writer.YieldAsync(node);
-            //     }
+                await Task.Yield();
+                yield return scenarioNodes[i];
+                currentIndex++;
+            }
 
-            //     IsEnd = !token.IsCancellationRequested;
-            // });
+            IsEnd = true;
         }
     }
 }

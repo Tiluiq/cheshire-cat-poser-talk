@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using CheshireCatPoserTalk.Domain.Presenter;
+using CheshireCatPoserTalk.Domain.Services;
 using CheshireCatPoserTalk.Entity.Scenario;
 
 namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
@@ -10,12 +11,14 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
         private readonly IScenarioProvider scenarioProvider;
         private readonly ITextWindowPresenter textWindowPresenter;
         private readonly IAnimationPresenter animationPresenter;
+        private readonly IAwaiterService awaiterService;
 
-        public AdvanceScenarioUseCase(IScenarioProvider scenarioProvider, ITextWindowPresenter textWindowPresenter, IAnimationPresenter animationPresenter)
+        public AdvanceScenarioUseCase(IScenarioProvider scenarioProvider, ITextWindowPresenter textWindowPresenter, IAnimationPresenter animationPresenter, IAwaiterService awaiterService)
         {
             this.scenarioProvider = scenarioProvider;
             this.textWindowPresenter = textWindowPresenter;
             this.animationPresenter = animationPresenter;
+            this.awaiterService = awaiterService;
         }
 
         public async ValueTask AdvanceAsync(CancellationToken cancellationToken = default)
@@ -36,7 +39,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
                         await textWindowPresenter.ShowTextAsync(textNode.Name, textNode.Text, cancellationToken);
                         if (textNode.WaitInput)
                         {
-
+                            await awaiterService.WaitForInputAsync(cancellationToken);
                         }
                         break;
 
@@ -52,7 +55,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
                         break;
 
                     case WaitNode waitNode:
-                        await Task.Delay((int)(waitNode.Duration * 1000), cancellationToken: cancellationToken);
+                        await awaiterService.WaitSecondsAsync(waitNode.Duration, cancellationToken);
                         break;
 
                     default:
