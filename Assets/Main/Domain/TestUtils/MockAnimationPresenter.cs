@@ -1,8 +1,8 @@
 using System.Threading;
-using Cysharp.Threading.Tasks;
-using Domain.Interface.Presenter;
+using System.Threading.Tasks;
+using CheshireCatPoserTalk.Domain.Presenter;
 
-namespace Domain.TestUtils
+namespace CheshireCatPoserTalk.Domain.TestUtils
 {
     public class MockAnimationPresenter : IAnimationPresenter
     {
@@ -15,10 +15,10 @@ namespace Domain.TestUtils
             this.animationDuration = animationDuration;
         }
 
-        public async UniTask PlayAnimationAsync(string animationName, CancellationToken cancellationToken)
+        public async ValueTask PlayAnimationAsync(string animationName, CancellationToken cancellationToken)
         {
             // ダミーで待つ
-            await UniTask.Delay((int)(animationDuration * 1000), cancellationToken: cancellationToken);
+            await Task.Delay((int)(animationDuration * 1000), cancellationToken: cancellationToken);
             IsPlayAnimaionEnded = true;
         }
     }

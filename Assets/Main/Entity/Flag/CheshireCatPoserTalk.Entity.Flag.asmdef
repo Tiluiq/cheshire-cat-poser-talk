@@ -1,6 +1,6 @@
 {
-    "name": "Entity.Scene.Global",
-    "rootNamespace": "Entity.Scene.Global",
+    "name": "CheshireCatPoserTalk.Entity.Flag",
+    "rootNamespace": "CheshireCatPoserTalk.Entity.Flag",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

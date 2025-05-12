@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 
-namespace Entity.Scenario
+namespace CheshireCatPoserTalk.Entity.Scenario
 {
     public interface IScenarioProvider
     {
-        IUniTaskAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync(CancellationToken cancellationToken = default);
+        IAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync(CancellationToken cancellationToken = default);
     }
 }

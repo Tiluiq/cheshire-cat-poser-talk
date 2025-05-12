@@ -1,10 +1,8 @@
-using Entity.Scenario;
 using System.Collections.Generic;
 using System.Threading;
-using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Linq;
+using CheshireCatPoserTalk.Entity.Scenario;
 
-namespace Domain.TestUtils
+namespace CheshireCatPoserTalk.Domain.TestUtils
 {
     public class MockScenarioProvider : IScenarioProvider
     {
@@ -26,22 +24,23 @@ namespace Domain.TestUtils
             IsEnd = false;
         }
 
-        public IUniTaskAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync(CancellationToken cancellationToken = default)
+        public IAsyncEnumerable<ScenarioNode> GetScenarioNodesAsync(CancellationToken cancellationToken = default)
         {
-            return UniTaskAsyncEnumerable.Create<ScenarioNode>(async (writer, token) =>
-            {
-                foreach (var node in scenarioNodes)
-                {
-                    if (token.IsCancellationRequested)
-                    {
-                        break;
-                    }
+            throw new System.NotImplementedException("This method is not implemented yet.");
+            // return UniTaskAsyncEnumerable.Create<ScenarioNode>(async (writer, token) =>
+            // {
+            //     foreach (var node in scenarioNodes)
+            //     {
+            //         if (token.IsCancellationRequested)
+            //         {
+            //             break;
+            //         }
 
-                    await writer.YieldAsync(node);
-                }
+            //         await writer.YieldAsync(node);
+            //     }
 
-                IsEnd = !token.IsCancellationRequested;
-            });
+            //     IsEnd = !token.IsCancellationRequested;
+            // });
         }
     }
 }

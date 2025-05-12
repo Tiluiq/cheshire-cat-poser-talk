@@ -1,8 +1,8 @@
 using System.Threading;
-using Cysharp.Threading.Tasks;
-using Domain.Interface.Presenter;
+using System.Threading.Tasks;
+using CheshireCatPoserTalk.Domain.Presenter;
 
-namespace Domain.TestUtils
+namespace CheshireCatPoserTalk.Domain.TestUtils
 {
     public class MockTextPresenter : ITextWindowPresenter
     {
@@ -12,23 +12,23 @@ namespace Domain.TestUtils
         public bool IsShowTextWindowCalled { get; private set; }
         public bool IsHideTextWindowCalled { get; private set; }
 
-        public UniTask ShowTextWindowAsync(bool showName, CancellationToken cancellationToken = default)
+        public ValueTask ShowTextWindowAsync(bool showName, CancellationToken cancellationToken = default)
         {
             IsShowTextWindowCalled = true;
-            return UniTask.CompletedTask;
+            return new ValueTask();
         }
 
-        public UniTask HideTextWindowAsync(CancellationToken cancellationToken = default)
+        public ValueTask HideTextWindowAsync(CancellationToken cancellationToken = default)
         {
             IsHideTextWindowCalled = true;
-            return UniTask.CompletedTask;
+            return new ValueTask();
         }
 
-        public UniTask ShowTextAsync(string name, string text, CancellationToken cancellationToken = default)
+        public ValueTask ShowTextAsync(string name, string text, CancellationToken cancellationToken = default)
         {
             LastName = name;
             LastText = text;
-            return UniTask.CompletedTask;
+            return new ValueTask();
         }
     }
 }

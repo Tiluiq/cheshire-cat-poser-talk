@@ -1,17 +1,15 @@
-using Entity.Scenario;
-using Cysharp.Threading.Tasks;
 using System.Threading;
-using Domain.Interface.Presenter;
+using System.Threading.Tasks;
+using CheshireCatPoserTalk.Domain.Presenter;
+using CheshireCatPoserTalk.Entity.Scenario;
 
-namespace Domain.AdvanceScenario
+namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
 {
     public class AdvanceScenarioUseCase
     {
         private readonly IScenarioProvider scenarioProvider;
         private readonly ITextWindowPresenter textWindowPresenter;
         private readonly IAnimationPresenter animationPresenter;
-
-        private UniTaskCompletionSource inputWaiter;
 
         public AdvanceScenarioUseCase(IScenarioProvider scenarioProvider, ITextWindowPresenter textWindowPresenter, IAnimationPresenter animationPresenter)
         {
@@ -20,7 +18,7 @@ namespace Domain.AdvanceScenario
             this.animationPresenter = animationPresenter;
         }
 
-        public async UniTask AdvanceAsync(CancellationToken cancellationToken = default)
+        public async ValueTask AdvanceAsync(CancellationToken cancellationToken = default)
         {
             await foreach (var currentNode in scenarioProvider.GetScenarioNodesAsync(cancellationToken))
             {
@@ -38,7 +36,7 @@ namespace Domain.AdvanceScenario
                         await textWindowPresenter.ShowTextAsync(textNode.Name, textNode.Text, cancellationToken);
                         if (textNode.WaitInput)
                         {
-                            await WaitForInputAsync(cancellationToken);
+
                         }
                         break;
 
@@ -49,30 +47,18 @@ namespace Domain.AdvanceScenario
                         }
                         else
                         {
-                            animationPresenter.PlayAnimationAsync(animationNode.AnimationName, cancellationToken).Forget();
+                            _ = animationPresenter.PlayAnimationAsync(animationNode.AnimationName, cancellationToken);
                         }
                         break;
 
                     case WaitNode waitNode:
-                        await UniTask.Delay((int)(waitNode.Duration * 1000), cancellationToken: cancellationToken);
+                        await Task.Delay((int)(waitNode.Duration * 1000), cancellationToken: cancellationToken);
                         break;
 
                     default:
                         throw new System.NotImplementedException($"Node type {currentNode.GetType()} is not implemented.");
                 }
             }
-        }
-
-        private async UniTask WaitForInputAsync(CancellationToken cancellationToken)
-        {
-            inputWaiter = new UniTaskCompletionSource();
-            await inputWaiter.Task.AttachExternalCancellation(cancellationToken);
-        }
-
-        public void CompleteInputWait()
-        {
-            inputWaiter?.TrySetResult();
-            inputWaiter = null;
         }
     }
 }

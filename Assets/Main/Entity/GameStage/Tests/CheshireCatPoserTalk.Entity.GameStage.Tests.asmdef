@@ -1,10 +1,10 @@
 {
-    "name": "Entity.Scene.Global.Test",
-    "rootNamespace": "Entity.Scene.Global.Test",
+    "name": "CheshireCatPoserTalk.Entity.GameStage.Tests",
+    "rootNamespace": "CheshireCatPoserTalk.Entity.GameStage.Tests",
     "references": [
         "GUID:27619889b8ba8c24980f49ee34dbb44a",
         "GUID:0acc523941302664db1f4e527237feb3",
-        "GUID:79befc0d65d4d0f47a9b3a86fc225334"
+        "GUID:6107dfcabb8aed84280297e8d206a1aa"
     ],
     "includePlatforms": [
         "Editor"

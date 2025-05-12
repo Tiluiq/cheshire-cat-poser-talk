@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using NUnit.Framework;
-using Entity.Scenario;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
-using Domain.TestUtils;
+using CheshireCatPoserTalk.Domain.TestUtils;
+using CheshireCatPoserTalk.Entity.Scenario;
 
-namespace Domain.AdvanceScenario.Test
+namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
 {
     public class AdvanceScenarioUseCaseTest
     {
@@ -75,8 +74,8 @@ namespace Domain.AdvanceScenario.Test
             };
             mockScenarioProvider.SetNodes(scenarioNodes);
 
-            advanceScenarioUseCase.AdvanceAsync(CancellationToken.None).Forget();
-            await UniTask.Delay(100); // 少し待つ
+            _ = advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
+            await Task.Delay(100); // 少し待つ
 
             Assert.AreEqual("Name1", mockTextPresenter.LastName);
             Assert.AreEqual("Text1", mockTextPresenter.LastText);
@@ -91,13 +90,13 @@ namespace Domain.AdvanceScenario.Test
             };
             mockScenarioProvider.SetNodes(scenarioNodes);
 
-            advanceScenarioUseCase.AdvanceAsync(CancellationToken.None).Forget();
-            await UniTask.Delay(100); // 少し待つ
+            _ = advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
+            await Task.Delay(100); // 少し待つ
 
             Assert.IsFalse(mockScenarioProvider.IsEnd); // 終了していない
 
-            advanceScenarioUseCase.CompleteInputWait(); // インプットを完了させる
-            await UniTask.Delay(100); // 少し待つ
+            // advanceScenarioUseCase.CompleteInputWait(); // インプットを完了させる
+            await Task.Delay(100); // 少し待つ
 
             Assert.IsTrue(mockScenarioProvider.IsEnd); // 終了している
         }
@@ -129,7 +128,7 @@ namespace Domain.AdvanceScenario.Test
 
             Assert.IsFalse(mockAnimationPresenter.IsPlayAnimaionEnded); // アニメーションが終了していない
 
-            await UniTask.Delay((int)(animationDuration * 1000)); // アニメーションのダミー時間待つ
+            await Task.Delay((int)(animationDuration * 1000)); // アニメーションのダミー時間待つ
 
             Assert.IsTrue(mockAnimationPresenter.IsPlayAnimaionEnded); // アニメーションが終了している
             Assert.IsTrue(mockScenarioProvider.IsEnd);

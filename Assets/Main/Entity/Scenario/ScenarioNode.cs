@@ -1,4 +1,4 @@
-namespace Entity.Scenario
+namespace CheshireCatPoserTalk.Entity.Scenario
 {
     public abstract class ScenarioNode { }
 

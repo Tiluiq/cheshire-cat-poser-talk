@@ -1,6 +1,6 @@
 {
-    "name": "Entity.Flag.Global",
-    "rootNamespace": "Entity.Flag.Global",
+    "name": "CheshireCatPoserTalk.Domain.Presenters",
+    "rootNamespace": "CheshireCatPoserTalk.Domain.Presenters",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
