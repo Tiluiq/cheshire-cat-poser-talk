@@ -1,4 +1,4 @@
-namespace Entity.Flag.Global
+namespace CheshireCatPoserTalk.Entity.Flag
 {
     public class GlobalFlag
     {
