@@ -1,0 +1,16 @@
+{
+    "name": "CheshireCatPoserTalk.Domain.UseCases.ChangeStage",
+    "rootNamespace": "CheshireCatPoserTalk.Domain.UseCases.ChangeStage",
+    "references": [
+        "GUID:6107dfcabb8aed84280297e8d206a1aa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
