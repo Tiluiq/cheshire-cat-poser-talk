@@ -1,15 +1,10 @@
 {
-    "name": "CheshireCatPoserTalk.Domain.TestUtils",
-    "rootNamespace": "CheshireCatPoserTalk.Domain.TestUtils",
+    "name": "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
+    "rootNamespace": "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
     "references": [
-        "GUID:6d27c4aec102a24429e18a65ae96ac95",
-        "GUID:8a5fd270483f1af45a951dca4da18057",
-        "GUID:5c336d8a65ef3ef4b82c6c7030f8b539",
         "GUID:4d87d24be98c7b346b386c362c4d89c1"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
