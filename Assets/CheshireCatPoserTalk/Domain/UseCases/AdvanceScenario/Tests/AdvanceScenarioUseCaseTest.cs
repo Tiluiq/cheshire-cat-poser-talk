@@ -14,7 +14,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
         private MockAnimationPresenter mockAnimationPresenter;
         private float animationDuration = 0.25f; // アニメーションのダミー時間
         private MockAwaiterService mockAwaiterService;
-        private AdvanceScenarioUseCase advanceScenarioUseCase;
+        private IAdvanceScenarioUseCase advanceScenarioUseCase;
 
         [SetUp]
         public void SetUp()

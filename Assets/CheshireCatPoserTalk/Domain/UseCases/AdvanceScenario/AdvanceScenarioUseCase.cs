@@ -6,7 +6,7 @@ using CheshireCatPoserTalk.Entity.Scenario;
 
 namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
 {
-    public class AdvanceScenarioUseCase
+    public class AdvanceScenarioUseCase : IAdvanceScenarioUseCase
     {
         private readonly IScenarioProvider scenarioProvider;
         private readonly ITextWindowPresenter textWindowPresenter;

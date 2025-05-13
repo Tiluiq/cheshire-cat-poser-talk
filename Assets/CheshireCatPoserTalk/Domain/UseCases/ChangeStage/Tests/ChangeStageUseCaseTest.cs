@@ -5,7 +5,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.ChangeStage.Test
 {
     public class ChangeStageUseCaseTest
     {
-        private ChangeStageUseCase changeStageUseCase;
+        private IChangeStageUseCase changeStageUseCase;
         private GameStage gameStage;
 
         [SetUp]
@@ -25,6 +25,20 @@ namespace CheshireCatPoserTalk.Domain.UseCases.ChangeStage.Test
             Assert.AreEqual(gameStage.CurrentStage, GameStageType.EndingStage);
             changeStageUseCase.ChangeStage(GameStageType.TitleStage);
             Assert.AreEqual(gameStage.CurrentStage, GameStageType.TitleStage);
+        }
+
+        [Test]
+        public void OnStageChanged_ステージ変更時にイベントが発火する()
+        {
+            var stageChangedCount = 0;
+            changeStageUseCase.OnStageChanged += (gameStageType) => { stageChangedCount++; };
+
+            changeStageUseCase.ChangeStage(GameStageType.MainGameStage);
+            Assert.AreEqual(1, stageChangedCount);
+            changeStageUseCase.ChangeStage(GameStageType.EndingStage);
+            Assert.AreEqual(2, stageChangedCount);
+            changeStageUseCase.ChangeStage(GameStageType.TitleStage);
+            Assert.AreEqual(3, stageChangedCount);
         }
     }
 }

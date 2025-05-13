@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CheshireCatPoserTalk.Domain.UseCases.GetLicense
 {
-    public class GetLicenseUseCase
+    public class GetLicenseUseCase : IGetLicenseUseCase
     {
         private ILicenseRepository licenseRepository;
 

@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using CheshireCatPoserTalk.Domain.Repository;
 using CheshireCatPoserTalk.Domain.TestUtils;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,7 +7,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.GetLicense.Tests
 {
     public class GetLicenseUseCaseTest
     {
-        private GetLicenseUseCase getLicenseUseCase;
+        private IGetLicenseUseCase getLicenseUseCase;
 
         private List<string> licenses = new List<string>
         {
