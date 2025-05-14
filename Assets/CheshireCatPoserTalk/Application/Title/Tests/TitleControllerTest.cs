@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CheshireCatPoserTalk.Application.Title.Tests
 {
-    public class TitlePresenterTest
+    public class TitleControllerTest
     {
-        private TitlePresenter titlePresenter;
+        private TitleController titlePresenter;
         private MockTitleView titleView;
         private IChangeStageUseCase changeStageUseCase;
         private MockLicenseView licenseView;
@@ -33,7 +33,7 @@ namespace CheshireCatPoserTalk.Application.Title.Tests
             changeStageUseCase = new MockChangeStageUseCase();
             licenseView = new MockLicenseView();
             getLicenseUseCase = new MockGetLicenseUseCase(licenses);
-            titlePresenter = new TitlePresenter(titleView, changeStageUseCase, licenseView, getLicenseUseCase);
+            titlePresenter = new TitleController(titleView, changeStageUseCase, licenseView, getLicenseUseCase);
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace CheshireCatPoserTalk.Application.Title.Tests
         public async Task SetLicenses_ライセンスが設定される()
         {
             Assert.IsNull(licenseView.Licenses);
-            await titlePresenter.StartAsync();
+            await titlePresenter.SetLicensesAsync();
             Assert.IsNotNull(licenseView.Licenses);
         }
     }

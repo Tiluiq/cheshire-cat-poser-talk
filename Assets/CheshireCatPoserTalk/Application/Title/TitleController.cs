@@ -3,24 +3,22 @@ using CheshireCatPoserTalk.Domain.UseCases.ChangeStage;
 using CheshireCatPoserTalk.Domain.UseCases.GetLicense;
 using CheshireCatPoserTalk.Entity.GameStage;
 using R3;
-using VContainer.Unity;
-using Cysharp.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace CheshireCatPoserTalk.Application.Title
 {
-    public class TitlePresenter : IAsyncStartable, IDisposable
+    public class TitleController : IDisposable
     {
         private readonly ITitleView titleView;
         private readonly IChangeStageUseCase changeStageUseCase;
-
 
         private readonly ILicenseView licenseView;
         private readonly IGetLicenseUseCase getLicenseUseCase;
 
         private readonly CompositeDisposable disposables = new CompositeDisposable();
 
-        public TitlePresenter(ITitleView titleView, IChangeStageUseCase changeStageUseCase, ILicenseView licenseView, IGetLicenseUseCase getLicenseUseCase)
+        public TitleController(ITitleView titleView, IChangeStageUseCase changeStageUseCase, ILicenseView licenseView, IGetLicenseUseCase getLicenseUseCase)
         {
             this.titleView = titleView;
             this.titleView.OnStartButtonClicked.Subscribe(_ => OnStartButtonClicked()).AddTo(disposables);
@@ -34,7 +32,7 @@ namespace CheshireCatPoserTalk.Application.Title
             this.getLicenseUseCase = getLicenseUseCase;
         }
 
-        public async UniTask StartAsync(CancellationToken cancellation = default)
+        public async ValueTask SetLicensesAsync(CancellationToken cancellation = default)
         {
             var licenses = await getLicenseUseCase.GetLicensesAsync();
             licenseView.SetLicenses(licenses);
