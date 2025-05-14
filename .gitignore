@@ -86,5 +86,5 @@ crashlytics-build.properties
 /Assets/Font/*.txt.meta
 
 # エディタースクリプト
-/Assets/Main/Editor.meta
-/Assets/Main/Editor/*
+/Assets/CheshireCatPoserTalk/Editor.meta
+/Assets/CheshireCatPoserTalk/Editor/*

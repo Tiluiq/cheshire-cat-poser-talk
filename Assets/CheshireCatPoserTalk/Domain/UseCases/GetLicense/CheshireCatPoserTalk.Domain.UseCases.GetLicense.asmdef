@@ -1,0 +1,16 @@
+{
+    "name": "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
+    "rootNamespace": "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
+    "references": [
+        "GUID:4d87d24be98c7b346b386c362c4d89c1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

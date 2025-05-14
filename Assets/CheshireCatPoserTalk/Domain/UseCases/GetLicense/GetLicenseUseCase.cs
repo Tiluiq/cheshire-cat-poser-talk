@@ -1,0 +1,21 @@
+using CheshireCatPoserTalk.Domain.Repository;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace CheshireCatPoserTalk.Domain.UseCases.GetLicense
+{
+    public class GetLicenseUseCase
+    {
+        private ILicenseRepository licenseRepository;
+
+        public GetLicenseUseCase(ILicenseRepository licenseRepository)
+        {
+            this.licenseRepository = licenseRepository;
+        }
+
+        public ValueTask<List<string>> GetLicensesAsync()
+        {
+            return licenseRepository.GetLicensesAsync();
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "CheshireCatPoserTalk.Domain.Presenters",
+    "rootNamespace": "CheshireCatPoserTalk.Domain.Presenters",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
