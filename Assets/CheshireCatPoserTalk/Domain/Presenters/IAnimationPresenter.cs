@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CheshireCatPoserTalk.Domain.Presenter
+namespace CheshireCatPoserTalk.Domain.Presenters
 {
     public interface IAnimationPresenter
     {
