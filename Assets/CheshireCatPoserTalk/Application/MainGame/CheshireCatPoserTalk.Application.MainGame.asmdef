@@ -1,16 +1,13 @@
 {
-    "name": "CheshireCatPoserTalk.Application.TestUtils",
-    "rootNamespace": "CheshireCatPoserTalk.Application.TestUtils",
+    "name": "CheshireCatPoserTalk.Application.MainGame",
+    "rootNamespace": "CheshireCatPoserTalk.Application.MainGame",
     "references": [
-        "GUID:6107dfcabb8aed84280297e8d206a1aa",
+        "GUID:cdce3492982ea8645a18ca8e7099adb1",
         "GUID:cc70ed3d86f0bd9409c3a177d6ddfa63",
-        "GUID:0bdbdcb5898e53d4c88413496c55bbb6",
-        "GUID:c0de276abcfd3bd4a93c243dd834f9e1",
+        "GUID:bf667f24b77ed7944a395cd631a03118",
         "GUID:cf0ceafc03e5f0742b72733fa67bddb2"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
