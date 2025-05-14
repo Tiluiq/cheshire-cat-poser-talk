@@ -1,0 +1,21 @@
+{
+    "name": "CheshireCatPoserTalk.Application.Title",
+    "rootNamespace": "CheshireCatPoserTalk.Application.Title",
+    "references": [
+        "GUID:cc70ed3d86f0bd9409c3a177d6ddfa63",
+        "GUID:6107dfcabb8aed84280297e8d206a1aa",
+        "GUID:c0de276abcfd3bd4a93c243dd834f9e1",
+        "GUID:77221876cc6b8244180b96e320b1bcd4",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

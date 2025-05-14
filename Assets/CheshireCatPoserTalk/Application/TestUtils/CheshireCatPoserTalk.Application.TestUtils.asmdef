@@ -1,0 +1,22 @@
+{
+    "name": "CheshireCatPoserTalk.Application.TestUtils",
+    "rootNamespace": "CheshireCatPoserTalk.Application.TestUtils",
+    "references": [
+        "GUID:6107dfcabb8aed84280297e8d206a1aa",
+        "GUID:cc70ed3d86f0bd9409c3a177d6ddfa63",
+        "GUID:0bdbdcb5898e53d4c88413496c55bbb6",
+        "GUID:c0de276abcfd3bd4a93c243dd834f9e1",
+        "GUID:77221876cc6b8244180b96e320b1bcd4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

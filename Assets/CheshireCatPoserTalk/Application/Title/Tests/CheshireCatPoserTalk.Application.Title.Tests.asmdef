@@ -1,0 +1,29 @@
+{
+    "name": "CheshireCatPoserTalk.Application.Title.Tests",
+    "rootNamespace": "CheshireCatPoserTalk.Application.Title.Tests",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "CheshireCatPoserTalk.Entity.GameStage",
+        "CheshireCatPoserTalk.Domain.UseCases.ChangeStage",
+        "CheshireCatPoserTalk.Application.TestUtils",
+        "CheshireCatPoserTalk.Application.Title",
+        "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
+        "UniTask"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
