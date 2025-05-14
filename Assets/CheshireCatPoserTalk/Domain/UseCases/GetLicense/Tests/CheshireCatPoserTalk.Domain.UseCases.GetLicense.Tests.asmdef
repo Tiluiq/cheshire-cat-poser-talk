@@ -2,11 +2,11 @@
     "name": "CheshireCatPoserTalk.Domain.UseCases.GetLicense.Tests",
     "rootNamespace": "CheshireCatPoserTalk.Domain.UseCases.GetLicense.Tests",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
-        "CheshireCatPoserTalk.Domain.Repository",
-        "CheshireCatPoserTalk.Domain.TestUtils"
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:c0de276abcfd3bd4a93c243dd834f9e1",
+        "GUID:3538a1ed382c2ae4f8718a6abb5ec200",
+        "GUID:bf667f24b77ed7944a395cd631a03118"
     ],
     "includePlatforms": [
         "Editor"

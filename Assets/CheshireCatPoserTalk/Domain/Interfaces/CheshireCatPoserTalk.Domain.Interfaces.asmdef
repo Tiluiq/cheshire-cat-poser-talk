@@ -1,6 +1,6 @@
 {
-    "name": "CheshireCatPoserTalk.Domain.Presenters",
-    "rootNamespace": "CheshireCatPoserTalk.Domain.Presenters",
+    "name": "CheshireCatPoserTalk.Domain.Interfaces",
+    "rootNamespace": "CheshireCatPoserTalk.Domain.Interfaces",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

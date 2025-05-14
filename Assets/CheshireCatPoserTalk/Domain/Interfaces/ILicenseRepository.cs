@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CheshireCatPoserTalk.Domain.Repository
+namespace CheshireCatPoserTalk.Domain.Interfaces
 {
     public interface ILicenseRepository
     {

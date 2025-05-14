@@ -1,6 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using CheshireCatPoserTalk.Domain.Presenters;
+using CheshireCatPoserTalk.Domain.Interfaces;
 
 namespace CheshireCatPoserTalk.Domain.TestUtils
 {

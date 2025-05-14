@@ -1,4 +1,4 @@
-using CheshireCatPoserTalk.Domain.Repository;
+using CheshireCatPoserTalk.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

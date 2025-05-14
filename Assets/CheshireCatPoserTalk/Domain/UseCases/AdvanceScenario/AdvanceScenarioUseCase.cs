@@ -1,7 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using CheshireCatPoserTalk.Domain.Presenters;
-using CheshireCatPoserTalk.Domain.Services;
+using CheshireCatPoserTalk.Domain.Interfaces;
 using CheshireCatPoserTalk.Entity.Scenario;
 
 namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario

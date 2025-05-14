@@ -2,7 +2,7 @@
     "name": "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
     "rootNamespace": "CheshireCatPoserTalk.Domain.UseCases.GetLicense",
     "references": [
-        "GUID:4d87d24be98c7b346b386c362c4d89c1"
+        "GUID:bf667f24b77ed7944a395cd631a03118"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

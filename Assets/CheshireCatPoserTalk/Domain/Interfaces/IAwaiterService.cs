@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CheshireCatPoserTalk.Domain.Services
+namespace CheshireCatPoserTalk.Domain.Interfaces
 {
     public interface IAwaiterService
     {
