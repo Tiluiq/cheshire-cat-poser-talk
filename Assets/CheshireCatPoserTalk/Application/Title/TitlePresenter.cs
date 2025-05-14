@@ -36,7 +36,6 @@ namespace CheshireCatPoserTalk.Application.Title
 
         public async UniTask StartAsync(CancellationToken cancellation = default)
         {
-
             var licenses = await getLicenseUseCase.GetLicensesAsync();
             licenseView.SetLicenses(licenses);
         }
