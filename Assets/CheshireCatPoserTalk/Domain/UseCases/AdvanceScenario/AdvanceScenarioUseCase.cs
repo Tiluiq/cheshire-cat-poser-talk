@@ -9,11 +9,11 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
     public class AdvanceScenarioUseCase : IAdvanceScenarioUseCase
     {
         private readonly IScenarioProvider scenarioProvider;
-        private readonly ITextWindowPresenter textWindowPresenter;
+        private readonly ITextPresenter textWindowPresenter;
         private readonly IAnimationPresenter animationPresenter;
         private readonly IAwaiterService awaiterService;
 
-        public AdvanceScenarioUseCase(IScenarioProvider scenarioProvider, ITextWindowPresenter textWindowPresenter, IAnimationPresenter animationPresenter, IAwaiterService awaiterService)
+        public AdvanceScenarioUseCase(IScenarioProvider scenarioProvider, ITextPresenter textWindowPresenter, IAnimationPresenter animationPresenter, IAwaiterService awaiterService)
         {
             this.scenarioProvider = scenarioProvider;
             this.textWindowPresenter = textWindowPresenter;
@@ -27,30 +27,26 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario
             {
                 switch (currentNode)
                 {
-                    case ShowTextWindowNode showTextWindowNode:
-                        await textWindowPresenter.ShowTextWindowAsync(showTextWindowNode.ShowName, cancellationToken);
-                        break;
-
-                    case HideTextWindowNode hideTextWindowNode:
-                        await textWindowPresenter.HideTextWindowAsync(cancellationToken);
-                        break;
-
                     case TextNode textNode:
-                        await textWindowPresenter.ShowTextAsync(textNode.Name, textNode.Text, cancellationToken);
+                        await textWindowPresenter.ShowTextAsync(textNode.TargetId, textNode.Name, textNode.Text, cancellationToken);
                         if (textNode.WaitInput)
                         {
                             await awaiterService.WaitForInputAsync(cancellationToken);
                         }
                         break;
 
+                    case HideTextNode hideTextNode:
+                        await textWindowPresenter.HideTextAsync(hideTextNode.TargetId, cancellationToken);
+                        break;
+
                     case AnimationNode animationNode:
                         if (animationNode.WaitForCompletion)
                         {
-                            await animationPresenter.PlayAnimationAsync(animationNode.AnimationName, cancellationToken);
+                            await animationPresenter.PlayAnimationAsync(animationNode.TargetId, animationNode.AnimationName, cancellationToken);
                         }
                         else
                         {
-                            _ = animationPresenter.PlayAnimationAsync(animationNode.AnimationName, cancellationToken);
+                            _ = animationPresenter.PlayAnimationAsync(animationNode.TargetId, animationNode.AnimationName, cancellationToken);
                         }
                         break;
 

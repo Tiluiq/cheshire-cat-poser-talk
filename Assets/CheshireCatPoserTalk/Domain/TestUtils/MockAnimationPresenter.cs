@@ -15,7 +15,7 @@ namespace CheshireCatPoserTalk.Domain.TestUtils
             this.animationDuration = animationDuration;
         }
 
-        public async ValueTask PlayAnimationAsync(string animationName, CancellationToken cancellationToken)
+        public async ValueTask PlayAnimationAsync(string targetId, string animationName, CancellationToken cancellationToken)
         {
             // ダミーで待つ
             await Task.Delay((int)(animationDuration * 1000), cancellationToken: cancellationToken);

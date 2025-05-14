@@ -5,6 +5,6 @@ namespace CheshireCatPoserTalk.Domain.Presenters
 {
     public interface IAnimationPresenter
     {
-        public ValueTask PlayAnimationAsync(string animationName, CancellationToken cancellationToken = default);
+        public ValueTask PlayAnimationAsync(string targetId, string animationName, CancellationToken cancellationToken = default);
     }
 }

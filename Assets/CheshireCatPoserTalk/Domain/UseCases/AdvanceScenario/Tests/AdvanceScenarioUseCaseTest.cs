@@ -38,41 +38,11 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
         }
 
         [Test, Timeout(1000)]
-        public async Task AdvanceAsync_ShowTextWindowNodeのときShowTextWindowAsyncが呼ばれて終了する()
+        public async Task AdvanceAsync_TextNodeのときIDと名前とテキストが設定される()
         {
             var scenarioNodes = new List<ScenarioNode>
             {
-                new ShowTextWindowNode("Window1")
-            };
-            mockScenarioProvider.SetNodes(scenarioNodes);
-
-            await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
-
-            Assert.IsTrue(mockTextPresenter.IsShowTextWindowCalled);
-            Assert.IsTrue(mockScenarioProvider.IsEnd);
-        }
-
-        [Test, Timeout(1000)]
-        public async Task AdvanceAsync_HideTextWindowNodeのときHideTextWindowAsyncが呼ばれて終了する()
-        {
-            var scenarioNodes = new List<ScenarioNode>
-            {
-                new HideTextWindowNode("Window1")
-            };
-            mockScenarioProvider.SetNodes(scenarioNodes);
-
-            await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
-
-            Assert.IsTrue(mockTextPresenter.IsHideTextWindowCalled);
-            Assert.IsTrue(mockScenarioProvider.IsEnd);
-        }
-
-        [Test, Timeout(1000)]
-        public async Task AdvanceAsync_TextNodeのとき名前とテキストが設定される()
-        {
-            var scenarioNodes = new List<ScenarioNode>
-            {
-                new TextNode("Name1", "Text1")
+                new TextNode("Target1", "Name1", "Text1")
             };
             mockScenarioProvider.SetNodes(scenarioNodes);
 
@@ -88,7 +58,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
         {
             var scenarioNodes = new List<ScenarioNode>
             {
-                new TextNode("Name1", "Text1")
+                new TextNode("Target1", "Name1", "Text1")
             };
             mockScenarioProvider.SetNodes(scenarioNodes);
 
@@ -108,7 +78,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
         {
             var scenarioNodes = new List<ScenarioNode>
             {
-                new TextNode("Name1", "Text1", false)
+                new TextNode("Target1", "Name1", "Text1", false)
             };
             mockScenarioProvider.SetNodes(scenarioNodes);
 
@@ -117,12 +87,27 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
             Assert.IsTrue(mockScenarioProvider.IsEnd);
         }
 
+        [Test, Timeout(1000)]
+        public async Task AdvanceAsync_HideTextWindowNodeのときHideTextWindowAsyncが呼ばれて終了する()
+        {
+            var scenarioNodes = new List<ScenarioNode>
+            {
+                new HideTextNode("Target1")
+            };
+            mockScenarioProvider.SetNodes(scenarioNodes);
+
+            await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
+
+            Assert.IsTrue(mockTextPresenter.IsHideTextWindowCalled);
+            Assert.IsTrue(mockScenarioProvider.IsEnd);
+        }
+
         [Test]
         public async Task AdvanceAsync_AnimationNodeでWaitForCompletionがfalseのとき処理が終了する()
         {
             var scenarioNodes = new List<ScenarioNode>
             {
-                new AnimationNode("Animation1")
+                new AnimationNode("Target1", "Animation1")
             };
             mockScenarioProvider.SetNodes(scenarioNodes);
 
@@ -141,7 +126,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
         {
             var scenarioNodes = new List<ScenarioNode>
             {
-                new AnimationNode("Animation1", true)
+                new AnimationNode("Target1", "Animation1", true)
             };
             mockScenarioProvider.SetNodes(scenarioNodes);
 
