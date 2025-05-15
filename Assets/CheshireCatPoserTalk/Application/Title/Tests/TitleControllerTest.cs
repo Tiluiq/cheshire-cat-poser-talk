@@ -10,7 +10,7 @@ namespace CheshireCatPoserTalk.Application.Title.Tests
 {
     public class TitleControllerTest
     {
-        private TitleController titlePresenter;
+        private TitleController titleController;
         private MockTitleView titleView;
         private IChangeStageUseCase changeStageUseCase;
         private MockLicenseView licenseView;
@@ -33,7 +33,7 @@ namespace CheshireCatPoserTalk.Application.Title.Tests
             changeStageUseCase = new MockChangeStageUseCase();
             licenseView = new MockLicenseView();
             getLicenseUseCase = new MockGetLicenseUseCase(licenses);
-            titlePresenter = new TitleController(titleView, changeStageUseCase, licenseView, getLicenseUseCase);
+            titleController = new TitleController(titleView, changeStageUseCase, licenseView, getLicenseUseCase);
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace CheshireCatPoserTalk.Application.Title.Tests
         public async Task SetLicenses_ライセンスが設定される()
         {
             Assert.IsNull(licenseView.Licenses);
-            await titlePresenter.SetLicensesAsync();
+            await titleController.SetLicensesAsync();
             Assert.IsNotNull(licenseView.Licenses);
         }
     }

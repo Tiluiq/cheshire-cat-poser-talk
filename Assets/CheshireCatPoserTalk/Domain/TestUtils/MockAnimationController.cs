@@ -4,13 +4,13 @@ using CheshireCatPoserTalk.Domain.Interfaces;
 
 namespace CheshireCatPoserTalk.Domain.TestUtils
 {
-    public class MockAnimationPresenter : IAnimationPresenter
+    public class MockAnimationController : IAnimationController
     {
         public bool IsPlayAnimaionEnded { get; private set; } = false;
 
         private float animationDuration;
 
-        public MockAnimationPresenter(float animationDuration)
+        public MockAnimationController(float animationDuration)
         {
             this.animationDuration = animationDuration;
         }

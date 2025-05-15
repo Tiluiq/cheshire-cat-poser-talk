@@ -10,8 +10,8 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
     public class AdvanceScenarioUseCaseTest
     {
         private MockScenarioProvider mockScenarioProvider;
-        private MockTextPresenter mockTextPresenter;
-        private MockAnimationPresenter mockAnimationPresenter;
+        private MockTextController mockTextController;
+        private MockAnimationController mockAnimationController;
         private float animationDuration = 0.25f; // アニメーションのダミー時間
         private MockAwaiterService mockAwaiterService;
         private IAdvanceScenarioUseCase advanceScenarioUseCase;
@@ -20,10 +20,10 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
         public void SetUp()
         {
             mockScenarioProvider = new MockScenarioProvider();
-            mockTextPresenter = new MockTextPresenter();
-            mockAnimationPresenter = new MockAnimationPresenter(animationDuration);
+            mockTextController = new MockTextController();
+            mockAnimationController = new MockAnimationController(animationDuration);
             mockAwaiterService = new MockAwaiterService();
-            advanceScenarioUseCase = new AdvanceScenarioUseCase(mockScenarioProvider, mockTextPresenter, mockAnimationPresenter, mockAwaiterService);
+            advanceScenarioUseCase = new AdvanceScenarioUseCase(mockScenarioProvider, mockTextController, mockAnimationController, mockAwaiterService);
         }
 
         [Test, Timeout(1000)]
@@ -49,8 +49,8 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
             _ = advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
             await Task.Delay(100); // 少し待つ
 
-            Assert.AreEqual("Name1", mockTextPresenter.LastName);
-            Assert.AreEqual("Text1", mockTextPresenter.LastText);
+            Assert.AreEqual("Name1", mockTextController.LastName);
+            Assert.AreEqual("Text1", mockTextController.LastText);
         }
 
         [Test, Timeout(1000)]
@@ -98,7 +98,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
-            Assert.IsTrue(mockTextPresenter.IsHideTextWindowCalled);
+            Assert.IsTrue(mockTextController.IsHideTextWindowCalled);
             Assert.IsTrue(mockScenarioProvider.IsEnd);
         }
 
@@ -113,11 +113,11 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
-            Assert.IsFalse(mockAnimationPresenter.IsPlayAnimaionEnded); // アニメーションが終了していない
+            Assert.IsFalse(mockAnimationController.IsPlayAnimaionEnded); // アニメーションが終了していない
 
             await Task.Delay((int)(animationDuration * 1000 * 1.1)); // アニメーションのダミー時間＋α待つ
 
-            Assert.IsTrue(mockAnimationPresenter.IsPlayAnimaionEnded); // アニメーションが終了している
+            Assert.IsTrue(mockAnimationController.IsPlayAnimaionEnded); // アニメーションが終了している
             Assert.IsTrue(mockScenarioProvider.IsEnd);
         }
 
@@ -132,7 +132,7 @@ namespace CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario.Tests
 
             await advanceScenarioUseCase.AdvanceAsync(CancellationToken.None);
 
-            Assert.IsTrue(mockAnimationPresenter.IsPlayAnimaionEnded);
+            Assert.IsTrue(mockAnimationController.IsPlayAnimaionEnded);
             Assert.IsTrue(mockScenarioProvider.IsEnd);
         }
 

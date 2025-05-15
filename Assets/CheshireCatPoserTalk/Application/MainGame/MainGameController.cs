@@ -1,6 +1,6 @@
 namespace CheshireCatPoserTalk.Application.MainGame
 {
-    public class MainGamePresenter
+    public class MainGameController
     {
 
     }
