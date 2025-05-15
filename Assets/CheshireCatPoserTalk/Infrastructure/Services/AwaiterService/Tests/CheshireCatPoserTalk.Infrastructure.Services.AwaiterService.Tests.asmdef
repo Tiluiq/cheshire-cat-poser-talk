@@ -1,10 +1,10 @@
 {
-    "name": "CheshireCatPoserTalk.Infrastructure.Services.UniTaskAwaiterService.Tests",
-    "rootNamespace": "CheshireCatPoserTalk.Infrastructure.Services.UniTaskAwaiterService.Tests",
+    "name": "CheshireCatPoserTalk.Infrastructure.Services.AwaiterService.Tests",
+    "rootNamespace": "CheshireCatPoserTalk.Infrastructure.Services.AwaiterService.Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "CheshireCatPoserTalk.Infrastructure.Services.UniTaskAwaiterService"
+        "CheshireCatPoserTalk.Infrastructure.Services.AwaiterService"
     ],
     "includePlatforms": [
         "Editor"

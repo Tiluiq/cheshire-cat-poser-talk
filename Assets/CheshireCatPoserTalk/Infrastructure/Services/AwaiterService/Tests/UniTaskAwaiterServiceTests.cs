@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace CheshireCatPoserTalk.Infrastructure.Services.UniTaskAwaiterService.Tests
+namespace CheshireCatPoserTalk.Infrastructure.Services.AwaiterService.Tests
 {
     public class UniTaskAwaiterServiceTests
     {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using CheshireCatPoserTalk.Domain.Interfaces;
 using Cysharp.Threading.Tasks;
 
-namespace CheshireCatPoserTalk.Infrastructure.Services.UniTaskAwaiterService
+namespace CheshireCatPoserTalk.Infrastructure.Services.AwaiterService
 {
     public class UniTaskAwaiterService : IAwaiterService
     {
