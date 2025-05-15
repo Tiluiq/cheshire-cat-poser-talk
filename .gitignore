@@ -88,3 +88,7 @@ crashlytics-build.properties
 # エディタースクリプト
 /Assets/CheshireCatPoserTalk/Editor.meta
 /Assets/CheshireCatPoserTalk/Editor/*
+
+# NuGetのファイル
+/Assets/Packages.meta
+/Assets/Packages/*
