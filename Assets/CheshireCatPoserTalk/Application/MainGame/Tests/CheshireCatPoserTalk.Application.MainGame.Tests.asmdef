@@ -4,6 +4,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
+        "CheshireCatPoserTalk.Domain.UseCases.AdvanceScenario",
         "CheshireCatPoserTalk.Application.MainGame",
         "CheshireCatPoserTalk.Application.TestUtils",
         "CheshireCatPoserTalk.Application.Interfaces"
